@@ -21,7 +21,6 @@ export default class Board extends React.Component {
     .then(res => res.json())
     .then(data => {
       let pics = data.map(img => {
-        console.log(img)
         return (
           {
             name: img.user.last_name,
