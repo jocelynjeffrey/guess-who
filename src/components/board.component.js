@@ -1,7 +1,7 @@
 import React from 'react';
 import '../index.scss';
 
-import Card from './card.component';
+import Card from './Card.component';
 
 const ACCESS_KEY = 'KTuXy_cPslsLWiVYBNEBO506e2zq5torYfoHljX0vCI';
 // const SECRET_KEY = 'BhyEfaWUVdqtPMDttIg-K2SJoopNbmg6AgDTyfrfOnM';
@@ -20,7 +20,7 @@ export default class Board extends React.Component {
     fetch(ENDPOINT)
     .then(res => res.json())
     .then(data => {
-      let pics = data.map(img => {
+      let pictures = data.map(img => {
         return (
           {
             name: img.user.last_name,
@@ -29,34 +29,26 @@ export default class Board extends React.Component {
           }
         )
       })
-      this.setState({ pictures: pics })
+      this.setState({ pictures })
     })
     .catch(res => console.warn('There was a problem:', res))
   }
 
-  renderCards() {
-    return(
-      <span className="card-container">
+  render() {
+    return (
+    <div className="board-component">
+      {       <span className="card-container">
         { this.state.pictures.map(img => {
           return (
             <Card
             name={img.name || 'banana'}
-            isActive="true"
-            click={() => console.log('clicked')}
             img={img.src}
             alt={img.alt}
             key={img.alt}
             ></Card>
           )
         }) }
-      </span>
-    );
-  }
-
-  render() {
-    return (
-    <div className="board-component">
-      { this.renderCards() }
+      </span> }
     </div>
     );
   }

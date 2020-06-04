@@ -1,5 +1,8 @@
 .game {
   border: 2px dashed red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .board-component {
@@ -13,13 +16,20 @@
   align-items: center;
 }
 
-.card-component {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   margin: 2px;
-  background-color: aquamarine;
+  background-color: darkgray;
+  opacity: .3;
+
+  &.active {
+    background-color: aquamarine;
+    opacity: 1;
+    border:1px solid red;
+  }
 
   .name {
     font-size: 24px;
@@ -30,10 +40,10 @@
     width: 200px;
   }
 }
-.inactive {
-  background-color: darkgray;
 
-  img {
-    opacity: .3;
-  }
+.guessInput {
+  width: 25rem;
+  height: 3rem;
+  text-align: center;
+  text-transform: uppercase;
 }

@@ -1,28 +1,17 @@
 import React from 'react';
 
-export default class Card extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      isActive: true,
-    }
-  }
-
-  toggleActiveState() {
-    this.setState({
-      isActive: !this.state.isActive
-    });
-  }
-
-  render() {
-    return(
-      <button
-        className={`card-component ${this.state.isActive ? "active" : "inactive"}`}
-        onClick={() => this.toggleActiveState()}
-      >
-        <img src={this.props.img} alt={this.props.alt} key={this.props.alt} />
-        <span className="name">{this.props.name}</span>
-      </button>
-    );
-  }
+function toggleActiveClass(e) {
+  console.log(e.className);
+  e.classList.toggle('active');
 }
+
+export const Card = (props) =>
+      <button
+        className="active card"
+        onClick={(e) => toggleActiveClass(e.target)}
+      >
+        <img src={props.img} alt={props.alt} key={props.alt} />
+        <span className="name">{props.name}</span>
+      </button>
+
+export default Card;

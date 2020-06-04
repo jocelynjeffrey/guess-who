@@ -1,0 +1,1 @@
+export const ADD_GUESSED_CARD = "ADD_GUESSED_CARD";
